@@ -75,6 +75,8 @@
   hosts: web_servers
   gather_facts: true
   become: true
+  vars:
+    apache_pkg: "{{ 'apache2' if ansible_os_family == 'Debian' else 'httpd' if ansible_os_family == 'RedHat' }}"
   tasks:
   - name: Create user
     user:
@@ -87,11 +89,11 @@
 
   - name: Install apache web server
     package:
-      name: "{{ 'apache2' if ansible_os_family == 'Debian' else 'httpd' if ansible_os_family == 'RedHat' }}"
+      name: "{{ apache_pkg }}"
       state: latest
   - name: Start Apache web server
     service:
-      name: "{{ 'apache2' if ansible_os_family == 'Debian' else 'httpd' if ansible_os_family == 'RedHat' }}"
+      name: "{{ apache_pkg }}"
       state: started
       enabled: true
 ```
