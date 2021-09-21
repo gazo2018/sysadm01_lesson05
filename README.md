@@ -2,7 +2,7 @@
 ## Package managment
 ### Environment Setup:
  1. Open Cloud shell: https://shell.cloud.google.com/
- 2. Switch to *sysadm01* project: `gcloud config set project sysadm01`
+ 2. Switch to *sysadm01* project: `gcloud config set project $(gcloud projects list --format="json"|jq -r '.[] | select(.name | contains("syseng01-")) | .name')`
  3. Set Default zone: `gcloud config set compute/zone us-central1-a`
 
 ### Debian Practice:
@@ -68,7 +68,7 @@
 21.  Create ansible play
 		-  Run `mkdir ansible` to create ansible folder
 		-  Run `cd ansible` to change directory to ansible folder
-		-   Use *nano* or *vi* `nano ./lesson4.yml` to start editing yaml file and add following content:
+		-  Use *nano* or *vi* `nano ./lesson4.yml` to start editing yaml file and add following content:
 ```
 ---
 - name: Lesson 4 Playbook
