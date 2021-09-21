@@ -63,7 +63,7 @@
 ### Ansible Practice:
 20. Install Ansible on cloud shell instance
 	-  Run `sudo pip3 install --upgrade pip` to upgrade PIP verison
-	-  Run `sudo pip3 install ansible`  to Install ansible
+	-  Run `sudo pip3 install ansible requests google-auth`  to Install ansible
 	-  Run `ansible --version` to make sure installation was successful
 21.  Create ansible play
 		-  Run `mkdir ansible` to create ansible folder
