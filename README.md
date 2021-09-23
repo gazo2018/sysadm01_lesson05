@@ -16,7 +16,7 @@
 	- Run  `sudo apt install -y apache2` to install apache package and skip confirmation
  7. Install nginx from deb package
 	- To download nginx package from the internet run 
-	`curl http://nginx.org/packages/debian/pool/nginx/n/nginx/nginx_1.20.0-1~buster_amd64.deb` 
+	`curl http://nginx.org/packages/debian/pool/nginx/n/nginx/nginx_1.20.0-1~buster_amd64.deb -o nginx_1.20.0-1~buster_amd64.deb` 
 	- Install the package using dpkg tool: `sudo dpkg -i nginx_1.20.0-1~buster_amd64.deb`
  8. Remove Apache and Nginx package 
 	- Run `sudo apt remove -y apache2` to remove apache2 package and skip confirmation
