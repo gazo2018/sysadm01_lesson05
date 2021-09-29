@@ -146,9 +146,8 @@ enable_plugins = gcp_compute
 	- Run `ansible -i ./inventory/my.gcp.yml web_servers -m shell -a 'netstat -tulnp|grep 80'` 
 	- Analyze output, make sure both hosts have port 80 open
 	- Run `ansible -i ./inventory/my.gcp.yml web_servers -m shell -a 'sudo cat /etc/passwd|grep sysadm'` 
-	- Analyze output, make sure both hosts have *sysadm* user and home folder is set to `/var/lib/sysadm`
 29. Remove instances
-	-   Delete Debian instance: `gcloud compute instances delete lesson4-debian`
-	-   Delete CentOS instance: `gcloud compute instances delete lesson4-centos`
+	-   Delete Debian instance: `gcloud compute instances delete lesson4-debian -q`
+	-   Delete CentOS instance: `gcloud compute instances delete lesson4-centos -q`
 30. Make sure you don't have any running instances:
 	- Run `gcloud compute instances list`
