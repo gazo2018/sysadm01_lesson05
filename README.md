@@ -100,7 +100,8 @@
 ```
 22. Create inventory folder
 	-  Run `mkdir inventory` to create the folder
-    -  Use *nano* or *vi* `nano ./inventory/my.gcp.yml` to start editing yaml file and add following content:
+	-  Run `gcloud projects list --format="json"|jq -r '.[] | select(.name | contains("syseng01-")` to see project name.
+	-  Use *nano* or *vi* `nano ./inventory/my.gcp.yml` to start editing yaml file and add following content (update `sysadm01` with project name from previous step):
 ```
 plugin: gcp_compute
 zones:
