@@ -44,6 +44,7 @@
 14. Install Apache Web Server
 	-   Run `sudo yum install -y httpd` to install apache web server and skip confirmation
 15. Install nginx from rpm package by URL
+	-   Run `sudo yum install -y openssl` to install openssl library required for next step
 	-   Install the package using rpm tool: 
 `sudo rpm -i http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.20.1-1.el7.ngx.x86_64.rpm`
 16. Remove Apache and Nginx package 
