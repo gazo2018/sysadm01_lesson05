@@ -2,6 +2,10 @@
 ## Package managment
 ### Environment Setup:
  1. Open Cloud shell: https://shell.cloud.google.com/
+
+	> We assume you already complete Lesson02 HW and have Project and SSH keys set up. 
+	> Otherwise repeat steps 3 - 11 of [Lesson02 HW](https://github.com/shalobalo/sysadm01_lesson02)
+
  2. Switch to *sysadm01* project: `gcloud config set project $(gcloud projects list --format="json"|jq -r '.[] | select(.name | contains("syseng01-")) | .name')`
  3. Set Default zone: `gcloud config set compute/zone us-central1-a`
 
