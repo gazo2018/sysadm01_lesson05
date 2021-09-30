@@ -9,14 +9,14 @@
  4. Create debian instance: 
 `gcloud compute instances create lesson4-debian --image-project debian-cloud --image-family debian-10`
  5. Get remote shell to debian instance
-	- Get list of running instances: `gcloud compute instances list`
-	- Find *EXTERNAL_IP* of instance *lesson4-debian* 
-	- Run `ssh <EXTERNAL_IP>` to login
+	- Run `ssh $(gcloud compute instances describe lesson04-debian --format='get(networkInterfaces[0].accessConfigs[0].natIP)')` to login
+
+	> IMPORTANT! You should see shell prompt changed to [andy@lesson04-debian ~]$ which indicates you are connected to remote host
+ 
  6. Install Apache web Server:
-	- Run  `sudo apt install -y apache2` to install apache package and skip confirmation
+	- Run `sudo apt install -y apache2` to install apache package and skip confirmation
  7. Install nginx from deb package
-	- To download nginx package from the internet run 
-	`curl http://nginx.org/packages/debian/pool/nginx/n/nginx/nginx_1.20.0-1~buster_amd64.deb -o nginx_1.20.0-1~buster_amd64.deb` 
+	- To download nginx package from the internet run `curl http://nginx.org/packages/debian/pool/nginx/n/nginx/nginx_1.20.0-1~buster_amd64.deb -o nginx_1.20.0-1~buster_amd64.deb` 
 	- Install the package using dpkg tool: `sudo dpkg -i nginx_1.20.0-1~buster_amd64.deb`
  8. Remove Apache and Nginx package 
 	- Run `sudo apt remove -y apache2` to remove apache2 package and skip confirmation
@@ -31,22 +31,25 @@
 	- Run `sudo gpasswd -d sysadm adm` to remove user from adm group 
     - Run `sudo userdel sysadm` to remove user from the system
 11. Close remote shell and terminate instnce
-	-   Run `exit` or press `ctrl + d` to close remote shell
+	-   Run `exit` or press `ctrl + d` to close remote shell. 
+
+	> Note: Ctrl + d will work only if there is no characters or commands entered in CLI.
+	
+	-   Make sure you are get back to cloudshell instance and your prompt line looks like this: andy@cloudshell:~ (syseng01-10246)
 	-   Run `gcloud compute instances delete lesson4-debian` to remove Debian instance
 
 ### CentOS Practice:
-12. Create CentOS instance
-		`gcloud compute instances create lesson4-centos --image-project centos-cloud --image-family centos-7`
+12. Create CentOS instance: `gcloud compute instances create lesson4-centos --image-project centos-cloud --image-family centos-7`
 13. Get remote shell to CentOS instance
-	- Get list of running instances: `gcloud compute instances list`
-	- Find *EXTERNAL_IP* of instance *lesson4-centos* 
-	- Run `ssh <EXTERNAL_IP>` to login
+	- Run `ssh $(gcloud compute instances describe lesson04-centos --format='get(networkInterfaces[0].accessConfigs[0].natIP)')` to login
+
+	> IMPORTANT! You should see shell prompt changed to [andy@lesson04-centos ~]$ which indicates you are connected to remote host
+
 14. Install Apache Web Server
 	-   Run `sudo yum install -y httpd` to install apache web server and skip confirmation
 15. Install nginx from rpm package by URL
 	-   Run `sudo yum install -y openssl` to install openssl library required for next step
-	-   Install the package using rpm tool: 
-`sudo rpm -i http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.20.1-1.el7.ngx.x86_64.rpm`
+	-   Install the package using rpm tool: `sudo rpm -i http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.20.1-1.el7.ngx.x86_64.rpm`
 16. Remove Apache and Nginx package 
 	- Run `sudo yum remove -y httpd` to remove httpd package and skip confirmation
  	- Run `sudo yum remove -y nginx` to remove nginx package and skip confirmation
@@ -60,8 +63,11 @@
     - Run `sudo userdel sysadm` to remove user from the system
 19. Close remote shell and terminate instnce
 	-   Run `exit` or press `ctrl + d` to close remote shell
+	-   Make sure you are get back to cloudshell instance and your prompt line looks like this: andy@cloudshell:~ (syseng01-10246)
 	-   Run `gcloud compute instances delete lesson4-centos` to remove CentOS instance
 ### Ansible Practice:
+	> Note: Whole block is for cloudshell instance. You don't need to use ssh here
+
 20. Install Ansible on cloud shell instance
 	-  Run `sudo pip3 install --upgrade pip` to upgrade PIP verison
 	-  Run `sudo pip3 install ansible requests google-auth`  to Install ansible
