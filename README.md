@@ -13,9 +13,9 @@
  4. Create debian instance: 
 `gcloud compute instances create lesson4-debian --image-project debian-cloud --image-family debian-10`
  5. Get remote shell to debian instance
-	- Run `ssh $(gcloud compute instances describe lesson04-debian --format='get(networkInterfaces[0].accessConfigs[0].natIP)')` to login
+	- Run `ssh $(gcloud compute instances describe lesson4-debian --format='get(networkInterfaces[0].accessConfigs[0].natIP)')` to login
 
-	> IMPORTANT! You should see shell prompt changed to [andy@lesson04-debian ~]$ which indicates you are connected to remote host
+	> IMPORTANT! You should see shell prompt changed to [andy@lesson4-debian ~]$ which indicates you are connected to remote host
  
  6. Install Apache web Server:
 	- Run `sudo apt install -y apache2` to install apache package and skip confirmation
@@ -45,9 +45,9 @@
 ### CentOS Practice:
 12. Create CentOS instance: `gcloud compute instances create lesson4-centos --image-project centos-cloud --image-family centos-7`
 13. Get remote shell to CentOS instance
-	- Run `ssh $(gcloud compute instances describe lesson04-centos --format='get(networkInterfaces[0].accessConfigs[0].natIP)')` to login
+	- Run `ssh $(gcloud compute instances describe lesson4-centos --format='get(networkInterfaces[0].accessConfigs[0].natIP)')` to login
 
-	> IMPORTANT! You should see shell prompt changed to [andy@lesson04-centos ~]$ which indicates you are connected to remote host
+	> IMPORTANT! You should see shell prompt changed to [andy@lesson4-centos ~]$ which indicates you are connected to remote host
 
 14. Install Apache Web Server
 	-   Run `sudo yum install -y httpd` to install apache web server and skip confirmation
