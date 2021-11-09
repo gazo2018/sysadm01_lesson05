@@ -28,6 +28,9 @@
  9. Update all outdated packages
 	- Run `sudo apt update` to update local package database
 	- Run `sudo apt -y upgrade` to upgrade all packages and skip confirmation
+
+	> IT'S TIME TO TAKE A SCREENSHOT: Make sure the screenshot contains at least 10 lines of google cloud shell log
+
 10. User Management
 	- Run `sudo useradd sysadm` to create `sysadm` user in the system
 	- Run `sudo usermod -a -G adm sysadm` to add *sysadm* user to *adm* group
@@ -42,6 +45,8 @@
 	-   Make sure you are get back to cloudshell instance and your prompt line looks like this: andy@cloudshell:~ (syseng01-10246)
 	-   Run `gcloud compute instances delete lesson4-debian` to remove Debian instance
 
+	> IT'S TIME TO TAKE A SCREENSHOT: Make sure the screenshot contains at least 10 lines of google cloud shell log
+
 ### CentOS Practice:
 12. Create CentOS instance: `gcloud compute instances create lesson4-centos --image-project centos-cloud --image-family centos-7`
 13. Get remote shell to CentOS instance
@@ -54,6 +59,8 @@
 15. Install nginx from rpm package by URL
 	-   Run `sudo yum install -y openssl` to install openssl library required for next step
 	-   Install the package using rpm tool: `sudo rpm -i http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.20.1-1.el7.ngx.x86_64.rpm`
+	> IT'S TIME TO TAKE A SCREENSHOT: Make sure the screenshot contains at least 10 lines of google cloud shell log
+
 16. Remove Apache and Nginx package 
 	- Run `sudo yum remove -y httpd` to remove httpd package and skip confirmation
  	- Run `sudo yum remove -y nginx` to remove nginx package and skip confirmation
@@ -69,6 +76,8 @@
 	-   Run `exit` or press `ctrl + d` to close remote shell
 	-   Make sure you are get back to cloudshell instance and your prompt line looks like this: andy@cloudshell:~ (syseng01-10246)
 	-   Run `gcloud compute instances delete lesson4-centos` to remove CentOS instance
+	> IT'S TIME TO TAKE A SCREENSHOT: Make sure the screenshot contains at least 10 lines of google cloud shell log
+
 ### Ansible Practice:
 	> Note: Whole block is for cloudshell instance. You don't need to use ssh here
 
@@ -141,6 +150,9 @@ enable_plugins = gcp_compute
 `gcloud compute instances create lesson4-centos --image-project centos-cloud --image-family centos-7 --tags http-server`
 26. Validate ansible GCP plugin:
 	-   Run `ansible-inventory -i ./inventory/my.gcp.yml --list`
+
+> IT'S TIME TO TAKE A SCREENSHOT: Make sure the screenshot contains at least 10 lines of google cloud shell log
+
     -   At the end of long JSON output You should see (Ip addresses will be different):
 ```
 "web_servers": {
@@ -156,6 +168,8 @@ enable_plugins = gcp_compute
 	- Run `ansible -i ./inventory/my.gcp.yml web_servers -m shell -a 'netstat -tulnp|grep 80'` 
 	- Analyze output, make sure both hosts have port 80 open
 	- Run `ansible -i ./inventory/my.gcp.yml web_servers -m shell -a 'sudo cat /etc/passwd|grep sysadm'` 
+	> IT'S TIME TO TAKE A SCREENSHOT: Make sure the screenshot contains at least 10 lines of google cloud shell log
+
 29. Remove instances
 	-   Delete Debian instance: `gcloud compute instances delete lesson4-debian -q`
 	-   Delete CentOS instance: `gcloud compute instances delete lesson4-centos -q`
